@@ -1,0 +1,29 @@
+<h1>Muse-can streaming service</h1>
+<div>
+
+  <table border='1' width='100%' style='border-collapse: collapse;'>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Operations</th>
+
+    </tr>
+
+    <tr *ngFor="let detail of details">
+      <td>{{ detail.id }}</td>
+      <td>{{ detail.name }}</td>
+      <td>
+        <button (click)="deleteDetail(detail.id, 'artist')">Delete</button>
+        <button (click)="selectDetail(detail)">Update</button>
+      </td>
+    </tr>
+  </table>
+
+<br><br>
+  <form #f = "ngForm">
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)] = "selectedDetail.name">
+    <input type="hidden" name="artist" [(ngModel)] = "selectedDetail.name">
+    <br><br>
+    <input type="button" (click)="createOrUpdateDetail(f)" value="Create or Update Detail">
+  </form>
